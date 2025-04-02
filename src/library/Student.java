@@ -48,7 +48,7 @@ public class Student {
 
     }
 
-    public Student getStudentInfo() {
-        return this;
+    public static ArrayList<Student> getStudents() {
+        return students;
     }
 }

@@ -30,8 +30,10 @@ public class Executor {
                 System.out.println("5. Get Books by Categories");
                 System.out.println("6. Borrow Books");
                 System.out.println("7. Return Borrow Books");
-                System.out.println("8. Exit");
-                System.out.println("10. Get Student Information");
+                System.out.println("8. Get All Students");
+                System.out.println("9. Get Student Information");
+                System.out.println("10. Exit");
+
                 System.out.print("Enter the action you want to perform: ");
 
                 try {
@@ -48,23 +50,6 @@ public class Executor {
                     case 0:
                         addStudent(bufferedReader);
                         break;
-                    case 10:{
-                        System.out.print("Enter your studentId: ");
-                        String studentId;
-                        try {
-                            studentId = bufferedReader.readLine();
-                        } catch (IOException e) {
-                            System.out.println("Error reading input. Please try again.");
-                            continue;
-                        }
-                        Student student = Student.getCurrentStudent(studentId);
-                        if (student != null) {
-                            System.out.println("Student information: " + student);
-                        } else {
-                            System.out.println("Student not found.");
-                        }
-                        break;
-                    }
                     case 1:
                         library.addBook();
                         break;
@@ -108,6 +93,7 @@ public class Executor {
                         } else {
                             System.out.println("Available categories: " + categories);
                         }
+                        break;
                     }
                     case 6: {
                         String bookName;
@@ -153,7 +139,29 @@ public class Executor {
                         }
                         break;
                     }
-                    case 8:
+                    case 8:{
+                        ArrayList<Student> students = Student.getStudents();
+                        System.out.println("Students in the library: "+ students);
+                        break;
+                    }
+                    case 9:{
+                        System.out.print("Enter your studentId: ");
+                        String studentId;
+                        try {
+                            studentId = bufferedReader.readLine();
+                        } catch (IOException e) {
+                            System.out.println("Error reading input. Please try again.");
+                            continue;
+                        }
+                        Student student = Student.getCurrentStudent(studentId);
+                        if (student != null) {
+                            System.out.println("Student information: " + student);
+                        } else {
+                            System.out.println("Student not found.");
+                        }
+                        break;
+                    }
+                    case 10:
                         System.out.println("Exiting...");
                         try {
                             bufferedReader.close();
@@ -164,7 +172,7 @@ public class Executor {
                     default:
                         System.out.println("Invalid action. Please try again.");
                 }
-            } while (action != 8);
+            } while (action != 10);
     }
 
     private void addStudent(BufferedReader bufferedReader) {
