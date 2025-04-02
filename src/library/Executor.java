@@ -8,7 +8,6 @@ import java.util.ArrayList;
 public class Executor {
 
     public void execute() {
-        System.out.println("Running the executor...");
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
         Library library = new Library(bufferedReader);
