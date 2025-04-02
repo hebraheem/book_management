@@ -51,7 +51,7 @@ public class Executor {
                         break;
                     case 10:{
                         System.out.print("Enter your studentId: ");
-                        String studentId = null;
+                        String studentId;
                         try {
                             studentId = bufferedReader.readLine();
                         } catch (IOException e) {
@@ -79,7 +79,7 @@ public class Executor {
                     }
                     case 3:{
                         System.out.print("Enter the book name to remove: ");
-                        String bookName = null;
+                        String bookName;
                         try {
                             bookName = bufferedReader.readLine();
                         } catch (IOException e) {
@@ -91,7 +91,7 @@ public class Executor {
                     }
                     case 4:{
                         System.out.print("Enter the category to get books: ");
-                        String category = null;
+                        String category;
                         try {
                             category = bufferedReader.readLine();
                         } catch (IOException e) {
@@ -111,8 +111,8 @@ public class Executor {
                         }
                     }
                     case 6: {
-                        String bookName = null;
-                        String studentId = null;
+                        String bookName;
+                        String studentId;
                         try {
                             System.out.print("Enter the book name to borrow: ");
                             bookName = bufferedReader.readLine();
@@ -133,8 +133,8 @@ public class Executor {
                         break;
                     }
                     case 7: {
-                        String bookName = null;
-                        String studentId = null;
+                        String bookName;
+                        String studentId;
                         try {
                             System.out.print("Enter the book name to return: ");
                             bookName = bufferedReader.readLine();
@@ -165,7 +165,7 @@ public class Executor {
                     default:
                         System.out.println("Invalid action. Please try again.");
                 }
-            } while (action != 4);
+            } while (action != 8);
     }
 
     private void addStudent(BufferedReader bufferedReader) {
