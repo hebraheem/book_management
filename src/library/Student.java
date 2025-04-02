@@ -47,4 +47,8 @@ public class Student {
                 .orElse(null);
 
     }
+
+    public Student getStudentInfo() {
+        return this;
+    }
 }

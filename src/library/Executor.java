@@ -19,8 +19,8 @@ public class Executor {
         if(studentCount == 0) {
             System.out.println("No students available. Add your first student.");
             addStudent(bufferedReader);
-        } else {
-            do {
+        }
+        do {
                 System.out.println("********* WELCOME TO LIBRARY *********");
                 System.out.println("Please select an action:");
                 System.out.println("0. Add Student");
@@ -32,6 +32,7 @@ public class Executor {
                 System.out.println("6. Borrow Books");
                 System.out.println("7. Return Borrow Books");
                 System.out.println("8. Exit");
+                System.out.println("10. Get Student Information");
                 System.out.print("Enter the action you want to perform: ");
 
                 try {
@@ -47,6 +48,24 @@ public class Executor {
                 switch (action) {
                     case 0:
                         addStudent(bufferedReader);
+                        break;
+                    case 10:{
+                        System.out.print("Enter your studentId: ");
+                        String studentId = null;
+                        try {
+                            studentId = bufferedReader.readLine();
+                        } catch (IOException e) {
+                            System.out.println("Error reading input. Please try again.");
+                            continue;
+                        }
+                        Student student = Student.getCurrentStudent(studentId);
+                        if (student != null) {
+                            System.out.println("Student information: " + student);
+                        } else {
+                            System.out.println("Student not found.");
+                        }
+                        break;
+                    }
                     case 1:
                         library.addBook();
                         break;
@@ -147,8 +166,6 @@ public class Executor {
                         System.out.println("Invalid action. Please try again.");
                 }
             } while (action != 4);
-        }
-
     }
 
     private void addStudent(BufferedReader bufferedReader) {
