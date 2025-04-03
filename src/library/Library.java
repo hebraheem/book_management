@@ -11,6 +11,10 @@ public class Library {
         this.bufferedReader = bufferedReader;
     }
 
+    public void addBook(Book book) {
+        books.add(book);
+    }
+
     public void addBook() {
         try{
             System.out.print("Enter the book title: ");
@@ -25,7 +29,7 @@ public class Library {
             int publicationYear =  bufferedReader.read();
 
             Book book = new Book(bookName, author, isbn, publicationYear,category);
-            books.add(book);
+            addBook(book);
 
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -44,6 +48,7 @@ public class Library {
     }
 
     public Book returnBook(String bookName, String studentId) {
+        System.out.println(books);
         for (Book book : books) {
             if (book.toString().contains(bookName)) {
                 if (book.getBorrowedBy() != null && book.getBorrowedBy().equals(studentId)) {
